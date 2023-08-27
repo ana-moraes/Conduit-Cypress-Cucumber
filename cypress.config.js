@@ -20,7 +20,7 @@ async function setupNodeEvents(on, config) {
 
 module.exports = defineConfig({
   e2e: {
-    baseUrl: "https://duckduckgo.com",
+    baseUrl: "https://angular.realworld.io",
     specPattern: "cypress/e2e/features/*.feature",
     setupNodeEvents,
   },
