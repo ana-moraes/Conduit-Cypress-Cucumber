@@ -1,0 +1,28 @@
+{
+  "name": "conduit-cypress-cucumber",
+  "version": "1.0.0",
+  "description": "This project was designed to automate some features based on the github project 'https://github.com/bondar-artem/angular-realworld-example-app'",
+  "main": "index.js",
+  "scripts": {
+    "cy:run": "cypress run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ana-moraes/Conduit-Cypress-Cucumber.git"
+  },
+  "author": "Ana M Oliveira (ana.moraesoliveira@gmail.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ana-moraes/Conduit-Cypress-Cucumber/issues"
+  },
+  "homepage": "https://github.com/ana-moraes/Conduit-Cypress-Cucumber#readme",
+  "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^18.0.4",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
+    "cypress": "^12.17.4"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true,
+    "stepDefinitions": "cypress/e2e/stepDefinitions/*.js"
+  }
+}
