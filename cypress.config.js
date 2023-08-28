@@ -20,8 +20,11 @@ async function setupNodeEvents(on, config) {
 
 module.exports = defineConfig({
   e2e: {
+    chromeWebSecurity: false,
     baseUrl: "https://angular.realworld.io",
     specPattern: "cypress/e2e/features/*.feature",
-    setupNodeEvents,
+    video: false,
+    defaultCommandTimeout: 30000,
+    setupNodeEvents
   },
 });

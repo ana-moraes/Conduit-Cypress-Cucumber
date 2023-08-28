@@ -1,6 +1,8 @@
 import HomePage from './pageObjects/homePage'
 import SignUpPage from './pageObjects/signUpPage'
 import SignInPage from './pageObjects/signInPage'
+import ArticlePage from './pageObjects/articlePage'
+import ProfilePage from './pageObjects/profilePage'
 
 /**
  * This is the main class that encapsulates all pages related to the application, except for base pages, as they are not intended to be directly called.
@@ -14,7 +16,8 @@ class Applications {
 		this.homePage = new HomePage()
 		this.signUpPage = new SignUpPage()
 		this.signInPage = new SignInPage()
-		
+		this.articlePage = new ArticlePage()
+		this.profilePage = new ProfilePage()
 	}
 }
 

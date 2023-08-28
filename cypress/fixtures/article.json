@@ -1,0 +1,6 @@
+{
+    "title": "New article",
+    "description": "This article is about tests",
+    "articleBody": "This article was written as a test using automation",
+    "tags": "#article #test"
+}
