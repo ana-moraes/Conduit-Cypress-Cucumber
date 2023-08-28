@@ -18,4 +18,4 @@ Use the command `npm install` to get dependencies and run the project.
 
 ## Test cases
 
-Check the attached sheet.
+Check the attached sheet Test Case.xlsx.
