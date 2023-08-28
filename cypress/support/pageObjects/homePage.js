@@ -36,7 +36,7 @@ class HomePage extends BasePage {
   }
 
   accessUserProfile() {
-    cy.get(selectors.userProfile).click();
+    cy.get(selectors.userProfile).click().wait(2000);
   }
 
   isHomeArticlesLoaded() {

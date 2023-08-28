@@ -10,11 +10,11 @@ const selectors = {
 
 class SignInPage extends BasePage {
   fillOutSignInForm(text) {
-    if (text == "valid") {
+    if (text === "valid") {
       cy.get(selectors.email).type(credentialsFixture.valid_email);
       cy.get(selectors.password).type(credentialsFixture.valid_password);
     }
-    if (text == "invalid") {
+    if (text === "invalid") {
       cy.get(selectors.email).type(credentialsFixture.invalid_email);
       cy.get(selectors.password).type(credentialsFixture.invalid_password);
     }

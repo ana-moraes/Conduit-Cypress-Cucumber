@@ -4,8 +4,8 @@
   "description": "This project was designed to automate some features based on the github project 'https://github.com/bondar-artem/angular-realworld-example-app'",
   "main": "index.js",
   "scripts": {
-    "cy:run": "cypress run",
-    "cy:open": "cypress open"
+    "cy:run": "cypress run --e2e --browser chrome",
+    "cy:open": "cypress open --e2e --browser chrome"
   },
   "repository": {
     "type": "git",

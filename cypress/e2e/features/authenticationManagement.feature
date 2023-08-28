@@ -5,21 +5,22 @@ Feature: Manage Sign in and Sign up
 
   @login @E2E
   Scenario: Sign up successfully
-    When I click on the "Sign up" link
+    When I click on the "<signType>" link
     And I fill in all the required fields
-  #   And I click on the "Sign up" button
-  #   Then the new user should be created
+    And I click on the "<signType>" button
+    Then the new user should be created
+    Examples:
+      | signType |
+      | Sign up  |
 
   @login @E2E @smoke
-  Scenario: Sign in successfully
-    When I click on the "Sign in" link
-    And I fill in with valid credentials
-    And I click on the "Sign in" button
-    Then the login should be successful
+  Scenario Outline: Sign in with different credentials
+    When I click on the "<signType>" link
+    And I fill in with <typeOfCredentials> credentials
+    And I click on the "<signType>" button
+    Then the login should be "<result>"
 
-  @login @E2E @smoke
-  Scenario: Sign in failed
-    When I click on the "Sign in" link
-    And I fill in with invalid credentials
-    And I click on the "Sign in" button
-    Then the login should be unsuccessful
+    Examples:
+      | typeOfCredentials | result       | signType |
+      | valid             | successful   | Sign in  |
+      | invalid           | unsuccessful | Sign in  |

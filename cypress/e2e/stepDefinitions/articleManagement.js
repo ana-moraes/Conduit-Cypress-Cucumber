@@ -3,7 +3,7 @@ import Applications from "../../support/applications";
 const applications = new Applications();
 export default class ArticleManagement {}
 
-When(/^I click on the "New Article" button$/, () => {
+When(/^I click to create a New Article$/, () => {
   applications.homePage.clickMenuByText("New Article");
 });
 
@@ -11,7 +11,7 @@ When(/^I fill in all the fields$/, () => {
   applications.articlePage.fillOutNewArticleForm();
 });
 
-When(/^I click on the "Publish Article" button$/, () => {
+When(/^I publish the article$/, () => {
   applications.articlePage.clickPublishButton();
 });
 
@@ -23,7 +23,7 @@ When(/^I select my published article (.*)$/, (title) => {
   applications.profilePage.clickArticle(title);
 });
 
-When(/^I click on the "Delete Article" button$/, () => {
+When(/^I delete the selected article$/, () => {
   applications.articlePage.deleteArticle();
 });
 

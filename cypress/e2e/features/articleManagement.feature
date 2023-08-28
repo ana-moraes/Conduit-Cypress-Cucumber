@@ -7,16 +7,16 @@ Feature: Manage articles
 
   @article @E2E
   Scenario: Publish an article
-    When I click on the "New Article" button
+    When I click to create a New Article
     And I fill in all the fields
-    And I click on the "Publish Article" button
+    And I publish the article
     Then the article should be successfully created
 
   @article @E2E
   Scenario: Delete an article
     When I access my profile
     And I select my published article <title>
-    And I click on the "Delete Article" button
+    And I delete the selected article
     Then the article should be successfully deleted
 
     Examples:
