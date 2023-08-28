@@ -12,6 +12,7 @@ const homePageLinks = {
 const selectors = {
   userProfile: 'img[class="user-pic"]',
   navBarTopRight: 'ul[class="nav navbar-nav pull-xs-right"] li',
+  articlePreview: 'div[class="app-article-preview"]',
 };
 
 class HomePage extends BasePage {
@@ -31,11 +32,16 @@ class HomePage extends BasePage {
   }
 
   clickMenuByText(text) {
-    this.accessMenuByText(selectors.navBarTopRight, text);
+    this.accessElementByText(selectors.navBarTopRight, text);
   }
 
   accessUserProfile() {
     cy.get(selectors.userProfile).click();
+  }
+
+  isHomeArticlesLoaded() {
+    const loadingElement = cy.get(selectors.articlePreview).contains("Loading articles");
+    cy.get(loadingElement).should("not.be.visible");
   }
 }
 

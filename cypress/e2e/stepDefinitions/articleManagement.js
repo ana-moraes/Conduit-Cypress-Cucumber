@@ -28,5 +28,8 @@ When(/^I click on the "Delete Article" button$/, () => {
 });
 
 Then(/^the article should be successfully deleted$/, () => {
+  applications.homePage.isHomeArticlesLoaded();
+  applications.homePage.accessUserProfile();
+  applications.profilePage.clickMyPosts();
   applications.articlePage.validateDeletedArticle();
 });

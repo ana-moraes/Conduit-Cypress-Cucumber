@@ -24,7 +24,7 @@ module.exports = defineConfig({
     baseUrl: "https://angular.realworld.io",
     specPattern: "cypress/e2e/features/*.feature",
     video: false,
-    defaultCommandTimeout: 30000,
+    defaultCommandTimeout: 10000,
     setupNodeEvents
   },
 });

@@ -3,11 +3,7 @@ class BasePage {
     cy.url().should("include", text);
   }
 
-  accessMenuByText(element, text) {
-    cy.get(element).contains(text).should("be.visible").click();
-  }
-
-  selectMyArticleByTitle(element, text) {
+  accessElementByText(element, text) {
     cy.get(element).contains(text).should("be.visible").click();
   }
 }

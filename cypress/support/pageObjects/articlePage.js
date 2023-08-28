@@ -9,6 +9,7 @@ const selectors = {
   publishArticleButton: 'button[class="btn btn-lg pull-xs-right btn-primary"]',
   deleteArticleButton: 'div[class="article-actions"] button[class="btn btn-sm btn-outline-danger"]',
   articlePageTitleH1: 'div[class="article-page"] h1',
+  errorMessages: 'ul[class="error-messages"] li',
 };
 
 class ArticlePage extends BasePage {
@@ -20,7 +21,7 @@ class ArticlePage extends BasePage {
   }
 
   clickPublishButton() {
-    cy.get(selectors.publishArticleButton).click();
+    cy.get(selectors.publishArticleButton).click().wait(1000);
   }
 
   deleteArticle() {
@@ -28,12 +29,14 @@ class ArticlePage extends BasePage {
   }
 
   validateCreatedArticle() {
+    cy.get(selectors.errorMessages).should("not.exist");
     cy.get(selectors.articlePageTitleH1).should("have.text", articleFixture.title);
-    this.validateUrlPath(articleFixture.title);
+    const title = articleFixture.title.replace(/\s+/g, "-");
+    this.validateUrlPath(title);
   }
 
   validateDeletedArticle() {
-    cy.get(selectors.articlePageTitleH1).should("not.have.text", articleFixture.title);
+    cy.get(selectors.articlePageTitleH1).should("not.exist", articleFixture.title);
   }
 }
 
