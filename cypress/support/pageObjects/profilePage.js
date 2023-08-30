@@ -8,8 +8,8 @@ const selectors = {
 };
 
 class ProfilePage extends BasePage {
-  clickArticle(text) {
-    this.accessElementByText(selectors.articlesHeaders, text);
+  clickArticle() {
+    cy.get(selectors.articlesHeaders).first().click();
   }
 
   clickMyPosts() {
@@ -17,10 +17,19 @@ class ProfilePage extends BasePage {
   }
 
   validateUsername() {
-    cy.get(selectors.profileUserNameH4).invoke('text').then(profileName => {
+    cy.get(selectors.profileUserNameH4)
+      .invoke("text")
+      .then((profileName) => {
         expect(profileName.trim()).to.contain(credentialsFixture.new_username);
-    });
-}
+      });
+  }
+
+  isArticleDeleted(deletedArticleTitle) {
+    cy.get(selectors.articlesHeaders)
+      .contains(deletedArticleTitle)
+      .should("not.exist");
+    cy.log("Article " + deletedArticleTitle + " not found");
+  }
 }
 
 export default ProfilePage;

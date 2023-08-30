@@ -9,19 +9,32 @@ const selectors = {
 };
 
 class SignInPage extends BasePage {
-  fillOutSignInForm(text) {
-    if (text === "valid") {
+  fillOutSignInForm(typeOfCredentials) {
+    if (typeOfCredentials === "valid") {
       cy.get(selectors.email).type(credentialsFixture.valid_email);
       cy.get(selectors.password).type(credentialsFixture.valid_password);
     }
-    if (text === "invalid") {
+    if (typeOfCredentials === "invalid") {
       cy.get(selectors.email).type(credentialsFixture.invalid_email);
       cy.get(selectors.password).type(credentialsFixture.invalid_password);
     }
   }
 
-  clickSignInButton() {
+  clickSignInButton(typeOfCredentials) {
     cy.get(selectors.signInButton).click();
+    cy.intercept("POST", "https://api.realworld.io/api/users/login", (request) => {
+      request.continue((response) => {
+        if (typeOfCredentials === "valid") {
+          expect(response.statusCode).to.be.eq(200);
+          expect(response.body.user.username).to.be.eq(
+            credentialsFixture.valid_username
+          );
+        } else if (typeOfCredentials === "invalid") {
+          expect(response.statusCode).to.be.eq(403);
+          expect(response.body.errors).to.not.be.empty;
+        }
+      });
+    });
   }
 
   isErrorMessagesVisible() {

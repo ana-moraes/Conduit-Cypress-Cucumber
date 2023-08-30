@@ -26,6 +26,11 @@ class SignUpPage extends BasePage {
   clickSignUpButton() {
     cy.get(selectors.signUpButton).click().wait(1000);
     cy.get(selectors.errorMessages).should("not.exist");
+    cy.intercept("POST", "https://conduit.productionready.io/api/users", (request) => {
+      request.continue((response) => {
+        expect(response.statusCode).to.be.eq(201);
+      });
+    });
   }
 
   validateUserWasCreated() {
