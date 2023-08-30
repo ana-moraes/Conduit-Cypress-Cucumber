@@ -1,7 +1,6 @@
 import { When, Then } from "@badeball/cypress-cucumber-preprocessor";
 import Applications from "../../support/applications";
 const applications = new Applications();
-export default class AutenticationManagement {}
 
 When(/^I click on the "(.*)" link$/, (linkType) => {
   applications.homePage.accessMenuOption(linkType);
@@ -15,10 +14,10 @@ When(/^I fill in with (.*) credentials$/, (typeOfCredentials) => {
   applications.signInPage.fillOutSignInForm(typeOfCredentials);
 });
 
-When(/^I click on the "(.*)" button$/, (buttonType) => {
+When(/^I click on the "(.*)" button - (.*)$/, (buttonType, typeOfCredentials) => {
   switch (buttonType) {
     case "Sign in":
-      applications.signInPage.clickSignInButton();
+      applications.signInPage.clickSignInButton(typeOfCredentials);
       break;
     case "Sign up":
       applications.signUpPage.clickSignUpButton();

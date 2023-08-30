@@ -7,17 +7,17 @@ Feature: Manage Sign in and Sign up
   Scenario: Sign up successfully
     When I click on the "<signType>" link
     And I fill in all the required fields
-    And I click on the "<signType>" button
+    And I click on the "<signType>" button - <typeOfCredentials>
     Then the new user should be created
     Examples:
-      | signType |
-      | Sign up  |
+      | signType | typeOfCredentials |
+      | Sign up  | valid             |
 
   @login @E2E @smoke
   Scenario Outline: Sign in with different credentials
     When I click on the "<signType>" link
     And I fill in with <typeOfCredentials> credentials
-    And I click on the "<signType>" button
+    And I click on the "<signType>" button - <typeOfCredentials>
     Then the login should be "<result>"
 
     Examples:

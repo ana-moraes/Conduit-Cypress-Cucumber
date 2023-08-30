@@ -15,10 +15,6 @@ Feature: Manage articles
   @article @E2E
   Scenario: Delete an article
     When I access my profile
-    And I select my published article <title>
+    And I select a published article
     And I delete the selected article
     Then the article should be successfully deleted
-
-    Examples:
-      | title       |
-      | New article |
